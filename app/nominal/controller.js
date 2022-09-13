@@ -12,6 +12,8 @@ module.exports = {
       res.render("admin/nominal/view_nominal", {
         nominal,
         alert,
+        title: "Nominal",
+        name: req.session.user.nama,
       });
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
@@ -22,7 +24,7 @@ module.exports = {
   },
   viewCreate: async (req, res) => {
     try {
-      res.render("admin/nominal/create");
+      res.render("admin/nominal/create", { title: "Create Nominal", name: req.session.user.nama });
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
       req.flash("alertStatus", "danger");
@@ -54,7 +56,7 @@ module.exports = {
     try {
       const { id } = req.params;
       const nominal = await Nominal.findOne({ _id: id });
-      res.render("admin/nominal/edit", { nominal });
+      res.render("admin/nominal/edit", { nominal, title: "Edit Nominal", name: req.session.user.nama });
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
       req.flash("alertStatus", "danger");

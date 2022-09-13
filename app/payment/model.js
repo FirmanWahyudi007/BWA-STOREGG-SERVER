@@ -16,6 +16,6 @@ let paymentSchema = mongoose.Schema({
       ref: "Bank",
     },
   ],
-});
+},{ timestamps: true });
 
 module.exports = mongoose.model("Payment", paymentSchema);

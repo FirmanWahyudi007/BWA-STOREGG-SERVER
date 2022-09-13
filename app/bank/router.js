@@ -1,6 +1,8 @@
 var express = require("express");
 var router = express.Router();
 const { index, viewCreate, actionCreate, viewEdit, actionEdit, actioDelete } = require("./controller");
+const { isLogin } = require("../middleware/auth");
+router.use(isLogin);
 
 /* GET home page. */
 router.get("/", index);

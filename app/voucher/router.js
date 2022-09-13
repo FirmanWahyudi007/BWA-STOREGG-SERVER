@@ -3,6 +3,8 @@ var router = express.Router();
 const { index, viewCreate, actionCreate, viewEdit, actionEdit, actioDelete, actionStatus } = require("./controller");
 const multer = require("multer");
 const os = require("os");
+const { isLogin } = require("../middleware/auth");
+router.use(isLogin);
 
 /* GET home page. */
 router.get("/", index);

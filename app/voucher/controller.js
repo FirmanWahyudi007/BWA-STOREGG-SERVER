@@ -18,6 +18,8 @@ module.exports = {
       res.render("admin/voucher/view_voucher", {
         voucher,
         alert,
+        title: "Voucher",
+        name: req.session.user.nama,
       });
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
@@ -30,7 +32,7 @@ module.exports = {
     try {
       const category = await Category.find();
       const nominal = await Nominal.find();
-      res.render("admin/voucher/create", { category, nominal });
+      res.render("admin/voucher/create", { category, nominal, title: "Create Voucher", name: req.session.user.nama });
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
       req.flash("alertStatus", "danger");
@@ -108,7 +110,7 @@ module.exports = {
       // console.log(coba);
       // console.log(currentImg);
 
-      res.render("admin/voucher/edit", { voucher, category, nominal });
+      res.render("admin/voucher/edit", { voucher, category, nominal, title: "Edit Voucher", name: req.session.user.nama });
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
       req.flash("alertStatus", "danger");
