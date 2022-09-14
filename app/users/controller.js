@@ -36,7 +36,7 @@ module.exports = {
           req.session.user = {
             id: check._id,
             email: check.email,
-            nama: check.nama,
+            nama: check.name,
           };
           res.redirect("/dashboard");
         }
